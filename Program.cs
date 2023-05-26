@@ -2,6 +2,7 @@
 
 using Homework_11;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Transactions;
 
 Person person = new Person();
@@ -38,22 +39,66 @@ Console.Write(triangleGetArea);
 
 Console.WriteLine($"****************************************\n");
 
-BankAccount bankaccount = new BankAccount("200002552550707", 100);
-int Balance = 100;
-Console.ReadLine();
-Console.WriteLine("Enter your deposit: ");
-float Deposit = float.Parse(Console.ReadLine());
-Console.WriteLine("How much would you like to withdraw?");
-float Withdraw = float.Parse(Console.ReadLine());
-Console.WriteLine(Balance + Deposit - Withdraw);
-
+BankAccount bankaccount = new BankAccount();
 CheckingAccount checkingAccount = new CheckingAccount();
-Console.WriteLine(checkingAccount.Balance);
-
-
 SavingsAccount savingsaccount = new SavingsAccount();
 
-Console.ReadLine();
+bankaccount.AccountNumber = "Your Account Number: 200002552660707";
+bankaccount.Balance = 1500;
+var depositAccount = bankaccount.Deposit();
+var withdrawAccount = bankaccount.Withdraw();
+checkingAccount.OverdraftFee = 250;	
+var withdrawBankAccount = checkingAccount.Withdraw();
+savingsaccount.InterestRate = checkingAccount.Balance * 5/100;
+var calculateInterest = savingsaccount.CalculateInterest();
+
+Console.WriteLine(bankaccount.AccountNumber);
+Console.WriteLine($"Your balance is: {bankaccount.Balance}");
+Console.WriteLine($"Please deposit money: {bankaccount.Deposit()}");
+Console.WriteLine($"Please withdraw money:{bankaccount.Withdraw()}");
+Console.WriteLine($"Overdraft fee: {checkingAccount.OverdraftFee}");
+Console.WriteLine($"Your current balance is: {checkingAccount.Balance}");
+Console.WriteLine(savingsaccount.InterestRate);
+Console.WriteLine(savingsaccount.CalculateInterest());
+
+Console.WriteLine($"****************************************\n");
+
+
+
+
+
+
+//string BankAccount = "";
+//Console.WriteLine("Enter your Bank Account: ");
+//Console.ReadLine();
+//float Balance = 0;
+//Console.WriteLine("Enter your deposit: ");
+////float Deposit = float.Parse(Console.ReadLine());
+
+
+
+
+
+
+
+//Console.WriteLine("How much would you like to withdraw?");
+//float Withdraw = float.Parse(Console.ReadLine());
+//Console.WriteLine($"Your balance is: {Balance + Deposit - Withdraw}");
+
+
+
+
+
+
+
+//var withdrawFinal = checkingAccount.Withdraw();
+//float OverdraftFee = 50;
+//Console.WriteLine($"The Overdraft fee is: {OverdraftFee}");
+//Console.WriteLine($"Your current account balance is: {withdrawFinal} ");
+
+
+
+//Console.ReadLine();
 
 
 

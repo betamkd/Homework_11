@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,15 +11,15 @@ namespace Homework_11
 	{
 		
 		public float OverdraftFee { get; set; }
-		
+
 		//public override float Withdraw()
 		//{
-			
+
 		//	if (balance < 0) 
 		//	{
 
 		//	return $"You have reached your balance! The overdraft fee is {float.Parse(overdraftFee)}";
-			
+
 		//	}
 		//	else
 		//	{
@@ -26,12 +27,17 @@ namespace Homework_11
 		//	}
 		//}
 
-		public override void Withdraw()
+
+
+		public override float Withdraw()
 		{
-			if (Balance < 0) 
+			if (Balance < 0)
 			{
-			return (OverdraftFee);
+				return (Balance - Withdraw());
 			}
+
+			else return Balance;
+			
 		}
 	}
 }
