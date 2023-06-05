@@ -16,18 +16,18 @@ namespace Homework_11
 		//}
 
 		public string AccountNumber { get; set; }
-		public float Balance { get; set; }
+		public decimal Balance { get; set; }
 
+		//decimal amount = 0;
+		//public decimal initialBalance = 1500;
 
-		public virtual float Deposit()
+		public virtual decimal Deposit(decimal amount )
 		{ 
-			return Balance + Deposit();
-			
+			return Balance += amount;
 		}
-		public virtual float Withdraw() 
+		public virtual decimal Withdraw(decimal amount) 
 		{
-			return Balance - Withdraw();
-			
+			return Balance -= amount;
 		}
 	}
 }

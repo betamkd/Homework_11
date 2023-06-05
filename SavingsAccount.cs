@@ -9,14 +9,16 @@ namespace Homework_11
 	
 	public class SavingsAccount : BankAccount
 	{
-		public virtual float InterestRate { get; set; }
+		public decimal InterestRate { get; set; }
 
+		//decimal rate = 0;
 		
 	
-	public float CalculateInterest()
+	public void CalculateInterest()
 		{
-		return Balance + CalculateInterest();
-	}
+			decimal interest = Balance * InterestRate;
+			Deposit(interest);
+		}
 
 }
 }

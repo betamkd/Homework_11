@@ -45,21 +45,30 @@ SavingsAccount savingsaccount = new SavingsAccount();
 
 bankaccount.AccountNumber = "Your Account Number: 200002552660707";
 bankaccount.Balance = 1500;
-var depositAccount = bankaccount.Deposit();
-var withdrawAccount = bankaccount.Withdraw();
-checkingAccount.OverdraftFee = 250;	
-var withdrawBankAccount = checkingAccount.Withdraw();
-savingsaccount.InterestRate = checkingAccount.Balance * 5/100;
-var calculateInterest = savingsaccount.CalculateInterest();
+decimal depositAccount = bankaccount.Deposit(2000);
+decimal withdrawAccount = bankaccount.Withdraw(1500);
 
+checkingAccount.OverdraftFee = 250;	
+decimal secondWithdraw = checkingAccount.Withdraw(1200);
+
+
+savingsaccount.AccountNumber = "210000255277882";
+savingsaccount.Balance = 5000;
+savingsaccount.InterestRate = 1.05m;
+//calculateInterest = savingsaccount.CalculateInterest();
+
+// 1. BankAccount
 Console.WriteLine(bankaccount.AccountNumber);
-Console.WriteLine($"Your balance is: {bankaccount.Balance}");
-Console.WriteLine($"Please deposit money: {bankaccount.Deposit()}");
-Console.WriteLine($"Please withdraw money:{bankaccount.Withdraw()}");
+Console.WriteLine($"Your balance after deposit and withdrawal is: {bankaccount.Balance}");
+
+// 2. CheckingAccount
 Console.WriteLine($"Overdraft fee: {checkingAccount.OverdraftFee}");
 Console.WriteLine($"Your current balance is: {checkingAccount.Balance}");
-Console.WriteLine(savingsaccount.InterestRate);
-Console.WriteLine(savingsaccount.CalculateInterest());
+
+// 3. SavingsAccount
+Console.WriteLine($"Your Savings Account Number is : {savingsaccount.AccountNumber}");
+Console.WriteLine($"The Savings Account Balance is: {savingsaccount.Balance * savingsaccount.InterestRate}");
+//Console.WriteLine(savingsaccount.CalculateInterest());
 
 Console.WriteLine($"****************************************\n");
 

@@ -10,7 +10,7 @@ namespace Homework_11
 	public class CheckingAccount : BankAccount
 	{
 		
-		public float OverdraftFee { get; set; }
+		public decimal OverdraftFee { get; set; }
 
 		//public override float Withdraw()
 		//{
@@ -27,16 +27,14 @@ namespace Homework_11
 		//	}
 		//}
 
-
-
-		public override float Withdraw()
+		public override decimal Withdraw(decimal amount)
 		{
-			if (Balance < 0)
+			if (Balance - amount < 0)
 			{
-				return (Balance - Withdraw());
+				return Balance -= amount + OverdraftFee;
 			}
 
-			else return Balance;
+			else return Balance -= amount;
 			
 		}
 	}
